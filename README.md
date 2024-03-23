@@ -1,0 +1,3 @@
+# SubMate
+
+Navigate Subscriptions Seamlessly
