@@ -1,4 +1,5 @@
 'use client'
+import SubscriptionForm from '@/components/SubscriptionForm'
 import useAuthStore from '@/context/authStore'
 import { useRouter } from 'next/navigation'
 
@@ -12,6 +13,9 @@ export default function page() {
     <main>
       <h1>Manage all your subscriptions</h1>
       <p>display subscriptions list here</p>
+      <section>
+        <SubscriptionForm />
+      </section>
     </main>
   )
 }
