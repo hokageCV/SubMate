@@ -14,12 +14,14 @@ export class SubscriptionService {
       ...formData,
       user_id: currentUser.$id,
       is_active: true,
-      end_date: handleRegularEndDate(formData.start_date, formData.recurring_frequency),
     }
 
     if (formData.recurring_frequency === 'custom') {
-      const endDate = handleCustomEndDate(formData.start_date, formData.custom_recurring_frequency)
-      subscriptionDetails = { ...subscriptionDetails, end_date: endDate }
+      const end_date = handleCustomEndDate(formData.start_date, formData.custom_recurring_frequency)
+      subscriptionDetails = { ...subscriptionDetails, end_date: end_date }
+    } else {
+      const end_date = handleRegularEndDate(formData.start_date, formData.recurring_frequency)
+      subscriptionDetails = { ...subscriptionDetails, end_date: end_date }
     }
 
     try {
