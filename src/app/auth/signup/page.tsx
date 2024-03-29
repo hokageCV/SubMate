@@ -8,16 +8,20 @@ import { FormEvent, useState } from 'react'
 export default function Signup() {
   const [formData, setFormData] = useState({ email: '', password: '', name: '' })
   const [error, setError] = useState('')
+  const [loading, setIsLoading] = useState(false)
   const { setIsLoggedIn } = useAuthStore()
   const router = useRouter()
 
   const create = async (e: FormEvent) => {
     e.preventDefault()
+    setIsLoading(true)
+
     try {
       const userData = await appwriteAuthService.createUserAccount(formData)
 
       if (userData) {
         setIsLoggedIn(true)
+        setIsLoading(false)
         router.push('/home')
       }
     } catch (error: any) {
@@ -73,6 +77,7 @@ export default function Signup() {
         <button type='submit' className='btn w-fit'>
           Signup
         </button>
+        {loading && <span className='loading loading-spinner'></span>}
       </form>
       <div className='divider'></div>
       <div className=' h-20 card rounded-box place-items-center'>

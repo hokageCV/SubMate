@@ -12,10 +12,13 @@ const initialFormData = {
 
 export default function SubscriptionForm() {
   const [formData, setFormData] = useState<FormCreateSubscription>(initialFormData)
+  const [loading, setIsLoading] = useState(false)
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
+    setIsLoading(true)
     await subscriptionService.createSubscription(formData)
+    setIsLoading(false)
     setFormData(initialFormData)
   }
 
@@ -107,6 +110,7 @@ export default function SubscriptionForm() {
         <button type='submit' className='btn w-fit'>
           Submit
         </button>
+        {loading && <span className='loading loading-spinner'></span>}
       </form>
     </section>
   )

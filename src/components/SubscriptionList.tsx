@@ -17,7 +17,7 @@ export default function SubscriptionList() {
   }, [])
 
   return (
-    <section>
+    <section className='mb-10'>
       {subscriptionList !== null ? (
         <div>
           <h2 className='text-2xl text-center'>Your Subscriptions</h2>

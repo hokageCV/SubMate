@@ -8,16 +8,20 @@ import { FormEvent, useState } from 'react'
 export default function Login() {
   const [formData, setFormData] = useState({ email: '', password: '' })
   const [error, setError] = useState('')
+  const [loading, setIsLoading] = useState(false)
   const { setIsLoggedIn } = useAuthStore()
   const router = useRouter()
 
   const create = async (e: FormEvent) => {
     e.preventDefault()
+    setIsLoading(true)
+
     try {
       const session = await appwriteAuthService.login(formData)
 
       if (session) {
         setIsLoggedIn(true)
+        setIsLoading(false)
         router.push('/home')
       }
     } catch (error: any) {
@@ -60,6 +64,7 @@ export default function Login() {
         <button type='submit' className='btn'>
           Login
         </button>
+        {loading && <span className='loading loading-spinner'></span>}
       </form>
       <div className='divider'></div>
       <div className=' h-20 card rounded-box place-items-center'>
