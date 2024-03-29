@@ -1,3 +1,5 @@
+import { DateTime } from 'luxon'
+
 export function handleRegularEndDate(start_date: string, frequency: string): string {
   const startDate = new Date(start_date)
   let endDate = new Date(startDate)
@@ -26,4 +28,9 @@ export function handleCustomEndDate(start_date: string, custom_frequency: number
   const startDate = new Date(start_date)
   const endDate = new Date(startDate.getTime() + custom_frequency * 24 * 60 * 60 * 1000)
   return endDate.toISOString()
+}
+
+export function readableDate(dateStr: string, format: string): string {
+  const date = new Date(dateStr)
+  return DateTime.fromJSDate(date).toFormat(format || 'dd LLLL yyyy')
 }
