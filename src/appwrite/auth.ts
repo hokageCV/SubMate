@@ -29,7 +29,7 @@ export class AppwriteAuthService {
 
   async login({ email, password }: LoginUserAccount) {
     try {
-      return await account.createEmailPasswordSession(email, password)
+      return await account.createEmailSession(email, password)
     } catch (error) {
       throw error
     }
