@@ -11,15 +11,9 @@ export default function page() {
   if (!isLoggedIn) router.push('/')
 
   return (
-    <main>
-      <h1>Manage all your subscriptions</h1>
-      <p>display subscriptions list here</p>
-      <section>
-        <SubscriptionForm />
-      </section>
-      <section>
-        <SubscriptionList />
-      </section>
+    <main className='flex flex-col justify-center items-center gap-8'>
+      <SubscriptionForm />
+      <SubscriptionList />
     </main>
   )
 }

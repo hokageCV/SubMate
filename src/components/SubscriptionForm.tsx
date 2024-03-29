@@ -1,11 +1,11 @@
 import { FormCreateSubscription } from '@/app/types'
-import subscriptionService, { SubscriptionService } from '@/appwrite/subscriptonDb'
+import subscriptionService from '@/appwrite/subscriptonDb'
 import { FormEvent, useState } from 'react'
 
 const initialFormData = {
   title: '',
   start_date: '',
-  email_notification: false,
+  email_notification: true,
   recurring_frequency: '',
   custom_recurring_frequency: 0,
 }
@@ -26,8 +26,8 @@ export default function SubscriptionForm() {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <section>
+      <form onSubmit={handleSubmit} className='flex flex-col items-center gap-4'>
         <label className='form-control w-full max-w-xs'>
           <div className='label'>
             <span className='label-text'>Title*</span>
@@ -108,6 +108,6 @@ export default function SubscriptionForm() {
           Submit
         </button>
       </form>
-    </div>
+    </section>
   )
 }

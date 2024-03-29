@@ -19,17 +19,17 @@ export default function Navbar() {
   }
 
   return (
-    <div className='navbar bg-base-100'>
+    <div className='navbar bg-base-100 shadow-lg mb-5'>
       <div className='flex-1'>
-        <a className='btn btn-ghost text-xl'>SubMate</a>
+        <a className='btn btn-ghost text-3xl'>SubMate</a>
       </div>
-      <div className='flex-none'>
+      <div className='flex-none mr-3'>
         {isLoggedIn ? (
-          <button className='btn btn-square btn-ghost' onClick={logout}>
+          <button className='btn btn-square btn-ghost text-xl' onClick={logout}>
             Logout
           </button>
         ) : (
-          <button className='btn btn-square btn-ghost'>
+          <button className='btn btn-square btn-ghost text-xl'>
             <Link href='/auth/login'>Login</Link>
           </button>
         )}

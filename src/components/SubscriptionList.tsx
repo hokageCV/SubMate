@@ -17,13 +17,13 @@ export default function SubscriptionList() {
   }, [])
 
   return (
-    <>
+    <section>
       {subscriptionList !== null ? (
         <div>
-          <h2 className='text-2xl'>Your Subscriptions</h2>
+          <h2 className='text-2xl text-center'>Your Subscriptions</h2>
           <div className='flex flex-col gap-4'>
             {subscriptionList.documents.map((subscription) => (
-              <div className='card w-96 bg-primary text-primary-content'>
+              <div className='card w-72 md:w-96 bg-primary text-primary-content'>
                 <div className='card-body'>
                   <h3 className='card-title'>{subscription.title}</h3>
                   <p>Start Date: {readableDate(subscription.start_date, 'dd-LLL-yyyy')}</p>
@@ -40,6 +40,6 @@ export default function SubscriptionList() {
           </div>
         </div>
       ) : null}
-    </>
+    </section>
   )
 }
