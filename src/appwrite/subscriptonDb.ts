@@ -13,6 +13,7 @@ export class SubscriptionService {
     let subscriptionDetails: Subscription = {
       ...formData,
       user_id: currentUser.$id,
+      user_email: currentUser.email,
       is_active: true,
     }
 

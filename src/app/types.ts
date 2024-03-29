@@ -1,5 +1,6 @@
 export type Subscription = {
   user_id: string
+  user_email: string
   title: string
   start_date: string
   end_date?: string
@@ -9,4 +10,4 @@ export type Subscription = {
   custom_recurring_frequency: number
 }
 
-export type FormCreateSubscription = Omit<Subscription, 'user_id' | 'end_date' | 'is_active'>
+export type FormCreateSubscription = Omit<Subscription, 'user_id' | 'user_email' | 'end_date' | 'is_active'>
