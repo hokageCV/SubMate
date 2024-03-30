@@ -2,6 +2,7 @@ import { FormCreateSubscription, Subscription } from '@/app/types'
 import config from '@/config/config'
 import { handleCustomEndDate, handleRegularEndDate } from '@/utils/date'
 import { ID, Query } from 'appwrite'
+import { DateTime } from 'luxon'
 import appwriteAuthService from './auth'
 import { databases } from './config'
 
@@ -72,6 +73,21 @@ export class SubscriptionService {
         config.appwriteDatabaseId,
         config.appwriteCollectionId,
         subscriptionId
+      )
+    } catch (error) {
+      throw error
+    }
+  }
+
+  async getAllExpiringSubscriptions() {
+    const tomorrow = DateTime.now().plus({ days: 1 })
+    const query = [Query.equal('end_date', tomorrow.toISODate()), Query.equal('is_active', true)]
+
+    try {
+      return await databases.listDocuments(
+        config.appwriteDatabaseId,
+        config.appwriteCollectionId,
+        query
       )
     } catch (error) {
       throw error
